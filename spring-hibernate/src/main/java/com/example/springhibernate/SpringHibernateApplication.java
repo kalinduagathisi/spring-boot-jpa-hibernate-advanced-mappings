@@ -1,6 +1,7 @@
 package com.example.springhibernate;
 
 import com.example.springhibernate.dao.AppDAO;
+import com.example.springhibernate.entity.Course;
 import com.example.springhibernate.entity.Instructor;
 import com.example.springhibernate.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -18,11 +19,11 @@ public class SpringHibernateApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner-> {
-//			createInstructor(appDAO);
+			createInstructor(appDAO);
 //			findInstructorById(appDAO);
 //			deleteInstructorById(appDAO);
 //			findByInstructorDetailId(appDAO);
-			deleteByInstructorDetails(appDAO);
+//			deleteByInstructorDetails(appDAO);
 		};
 	}
 
@@ -57,13 +58,22 @@ public class SpringHibernateApplication {
 	private void createInstructor(AppDAO appDAO) {
 
 		// create instructor
-		Instructor instructor = new Instructor("Steffan", "Perera", "tefp@gmai.com");
+		Instructor instructor = new Instructor("Garry", "Smith", "gsmith@gmai.com");
 
 		// create instructor details
-		InstructorDetail instructorDetail = new InstructorDetail("cgdx", "coding");
+		InstructorDetail instructorDetail = new InstructorDetail("garyCode", "coding");
 
 		// set instructor details to the instructor object
 		instructor.setInstructorDetail(instructorDetail);
+
+		// set course details
+//		Course course1 = new Course("Spring boot");
+		Course course2 = new Course("django");
+		Course course3 = new Course("express js");
+
+//		instructor.add(course1);
+		instructor.add(course2);
+		instructor.add(course3);
 
 		// saving instructor
 		// this will save instructor details object also,
