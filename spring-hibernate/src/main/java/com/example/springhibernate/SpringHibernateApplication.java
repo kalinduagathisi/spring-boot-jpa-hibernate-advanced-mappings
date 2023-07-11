@@ -19,9 +19,16 @@ public class SpringHibernateApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner-> {
 //			createInstructor(appDAO);
-			findInstructorById(appDAO);
+//			findInstructorById(appDAO);
+			deleteInstructorById(appDAO);
 
 		};
+	}
+
+	private void deleteInstructorById(AppDAO appDAO) {
+		int id = 1;
+		appDAO.deleteById(id);
+		System.out.println("Instructor deleted.. ID: "+id);
 	}
 
 	private void findInstructorById(AppDAO appDAO) {

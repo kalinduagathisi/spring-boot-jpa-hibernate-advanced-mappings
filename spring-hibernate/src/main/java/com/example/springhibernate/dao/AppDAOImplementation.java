@@ -26,4 +26,11 @@ public class AppDAOImplementation implements AppDAO{
     public Instructor findByID(int id) {
         return entityManager.find(Instructor.class, id);
     }
+
+    @Override
+    @Transactional
+    public void deleteById(int id) {
+        Instructor instructorToBeDeleted = entityManager.find(Instructor.class, id);
+        entityManager.remove(instructorToBeDeleted);
+    }
 }
