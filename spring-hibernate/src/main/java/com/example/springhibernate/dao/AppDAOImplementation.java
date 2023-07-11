@@ -1,6 +1,7 @@
 package com.example.springhibernate.dao;
 
 import com.example.springhibernate.entity.Instructor;
+import com.example.springhibernate.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,5 +33,17 @@ public class AppDAOImplementation implements AppDAO{
     public void deleteById(int id) {
         Instructor instructorToBeDeleted = entityManager.find(Instructor.class, id);
         entityManager.remove(instructorToBeDeleted);
+    }
+
+    @Override
+    public InstructorDetail findByInstructorDetailID(int id) {
+        return entityManager.find(InstructorDetail.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByInstructorDetails(int id) {
+        InstructorDetail instructorDetailToBeDelete = entityManager.find(InstructorDetail.class, id);
+        entityManager.remove(instructorDetailToBeDelete);
     }
 }

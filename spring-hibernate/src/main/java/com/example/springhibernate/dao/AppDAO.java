@@ -1,6 +1,7 @@
 package com.example.springhibernate.dao;
 
 import com.example.springhibernate.entity.Instructor;
+import com.example.springhibernate.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -9,4 +10,8 @@ public interface AppDAO {
     Instructor findByID(int id);
 
     void deleteById(int id);
+
+    InstructorDetail findByInstructorDetailID(int id);
+
+    void deleteByInstructorDetails(int id);
 }
